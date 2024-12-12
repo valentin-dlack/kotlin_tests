@@ -30,7 +30,7 @@ dependencies {
 	testImplementation("io.kotest:kotest-assertions-core:5.9.1")
 	testImplementation("io.kotest:kotest-property:5.9.1")
 	testImplementation("io.mockk:mockk:1.12.0")
-	testImplementation("info.solidsoft.pitest:pitest-junit5-plugin:1.15.0")
+	testImplementation("org.pitest:pitest-junit5-plugin:1.2.0")
 }
 
 kotlin {
