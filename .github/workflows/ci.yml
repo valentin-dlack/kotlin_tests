@@ -53,3 +53,12 @@ jobs:
           fail_below_threshold: false
           publish_only_summary: false
 
+      - name: Run PIT Mutation Testing
+        run: ./gradlew pitest
+
+      - name: Upload PIT Mutation Testing Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pit-report
+          path: build/reports/pitest
+

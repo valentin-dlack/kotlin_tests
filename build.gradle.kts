@@ -4,6 +4,7 @@ plugins {
 	id("org.springframework.boot") version "3.3.6"
 	id("io.spring.dependency-management") version "1.1.6"
 	id("jacoco")
+	id("info.solidsoft.pitest") version "1.15.0"
 }
 
 group = "com.example"
@@ -53,4 +54,10 @@ tasks.jacocoTestReport {
 		xml.required.set(true)
 		html.required.set(true)
 	}
+}
+
+pitest {
+	threads = 4
+	timestampedReports = false
+	targetClasses = listOf("com.example.demo.domain.model.*", "com.example.demo.domain.usecase.*")
 }
