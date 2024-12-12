@@ -41,16 +41,15 @@ jobs:
         with:
           files: build/test-results/**/*.xml
 
-      - name: Upload JaCoCo Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: jacoco-report
-          path: build/reports/jacoco/test/html
-
-      - name: Publish JaCoCo Coverage Report
+      - name: Publish JaCoCo Code Coverage Report
         uses: PavanMudigonda/jacoco-reporter@v5.0
         with:
-          coverage-results-path: build/reports/jacoco/test/jacocoTestReport.xml
-          coverage-summary-path: jacoco-summary.md
-          coverage-report-title: "JaCoCo Coverage Report"
+          coverage_results_path: build/reports/jacoco/test/jacocoTestReport.xml
+          coverage_report_name: Coverage
+          coverage_report_title: JaCoCo
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          skip_check_run: false
+          minimum_coverage: 80
+          fail_below_threshold: false
+          publish_only_summary: false
 
