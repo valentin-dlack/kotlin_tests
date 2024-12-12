@@ -32,8 +32,30 @@ jobs:
       - name: Run tests with Gradle
         run: ./gradlew test
 
+      - name: Generate JaCoCo report
+        run: ./gradlew jacocoTestReport
+
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
           files: build/test-results/**/*.xml
+
+      - name: Publish JaCoCo Report
+        uses: actions/upload-artifact@v2
+        with:
+            name: jacoco-report
+            path: build/reports/jacoco/test/html
+
+      - name: JaCoCo Code Coverage Report
+        id: jacoco_reporter
+        uses: PavanMudigonda/jacoco-reporter@v5.0
+        with:
+          coverage_results_path: jacoco-report/test.xml
+          coverage_report_name: Coverage
+          coverage_report_title: JaCoCo
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          skip_check_run: false
+          minimum_coverage: 80
+          fail_below_threshold: false
+          publish_only_summary: false
