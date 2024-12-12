@@ -41,11 +41,10 @@ jobs:
         with:
           files: build/test-results/**/*.xml
 
-      - name: JaCoCo Code Coverage Report
-        id: jacoco_reporter
+      - name: Publish JaCoCo Code Coverage Report
         uses: PavanMudigonda/jacoco-reporter@v5.0
         with:
-          coverage_results_path: jacoco-report/test.xml
+          coverage_results_path: build/reports/jacoco/test/jacocoTestReport.xml
           coverage_report_name: Coverage
           coverage_report_title: JaCoCo
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -53,3 +52,4 @@ jobs:
           minimum_coverage: 80
           fail_below_threshold: false
           publish_only_summary: false
+
