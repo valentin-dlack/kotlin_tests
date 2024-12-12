@@ -41,12 +41,6 @@ jobs:
         with:
           files: build/test-results/**/*.xml
 
-      - name: Publish JaCoCo Report
-        uses: actions/upload-artifact@v2
-        with:
-            name: jacoco-report
-            path: build/reports/jacoco/test/html
-
       - name: JaCoCo Code Coverage Report
         id: jacoco_reporter
         uses: PavanMudigonda/jacoco-reporter@v5.0
