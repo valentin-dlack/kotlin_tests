@@ -21,6 +21,10 @@ class InMemoryBookPort : BookRepository {
         books.add(book)
     }
 
+    override fun reserveBook(book: Book): Boolean {
+        return false
+    }
+
     fun clear() {
         books.clear()
     }

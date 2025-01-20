@@ -22,4 +22,13 @@ class BookDAO (
             mapOf("title" to book.title, "author" to book.author)
         )
     }
+
+    override fun reserveBook(book: Book): Boolean {
+        val updatedRows = namedParameterJdbcTemplate.update(
+            "UPDATE book SET reserved = true WHERE title = :title AND author = :author AND reserved = false",
+            mapOf("title" to book.title, "author" to book.author)
+        )
+        //print(updatedRows == 1)
+        return updatedRows == 1
+    }
 }
