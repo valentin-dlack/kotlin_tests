@@ -9,6 +9,6 @@ class BookUseCase(private val bookRepository: BookRepository) {
     }
 
     fun getAllBooks(): List<Book> {
-        return bookRepository.findAll().sortedBy { it.title }
+        return bookRepository.getAllBooks().sortedBy { it.title.lowercase() }
     }
 }

@@ -7,7 +7,7 @@ import io.kotest.matchers.collections.shouldBeSortedBy
 import io.mockk.mockk
 import io.mockk.verify
 
-class BookUseCasTests : DescribeSpec ({
+class BookUseCaseTests : DescribeSpec ({
     val mockRepo = mockk<BookRepository>(relaxed = true)
     val bookUseCase = BookUseCase(mockRepo)
 
